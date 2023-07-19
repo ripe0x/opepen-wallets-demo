@@ -22,8 +22,8 @@ const App = () => {
         alignContent: 'center',
         padding: 12,
         backgroundColor: '#000000',
-        height: '100vh',
-        width: '100vw',
+        height: '100%',
+        width: '100%',
         gap: 30
       }}
     >
