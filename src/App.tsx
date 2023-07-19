@@ -1,4 +1,4 @@
-import { ConnectButton } from '@rainbow-me/rainbowkit';
+import { AvatarComponent, ConnectButton } from '@rainbow-me/rainbowkit';
 import { useAccount } from 'wagmi';
 import OpepenAvatar from './OpenenAvatar';
 import { useEffect, useState } from 'react';
@@ -8,6 +8,20 @@ const App = () => {
   const { address, isConnecting, isDisconnected } = useAccount()
   const [textFieldVal, setTextFieldVal] = useState<string>('')
   const [displayedAddress, setDisplayedAddress] = useState<string>(addresses[Math.floor(Math.random() * addresses.length)])
+
+  const CustomAvatar: AvatarComponent = ({ address, ensImage, size }) => {
+    return ensImage ? (
+      <img
+        src={ensImage}
+        width={size}
+        height={size}
+        style={{ borderRadius: 999 }}
+      />
+    ) : (
+      <OpepenAvatar address={address} />
+    );
+  };
+
   useEffect(() => {
     if (address) {
       setDisplayedAddress(address)

@@ -73,16 +73,14 @@ const OpepenAvatar = ({ address }: Props) => {
   };
 
   return (
-    <div>
-      <img
-        src={img(address)}
-        alt=""
-        style={{
-          width: "100%",
-          maxWidth: "500px"
-        }}
-      />
-    </div>
+    <img
+      src={img(address)}
+      alt=""
+      style={{
+        width: "100%",
+        maxWidth: "500px"
+      }}
+    />
   );
 };
 
