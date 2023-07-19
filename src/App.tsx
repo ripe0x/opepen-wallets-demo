@@ -20,11 +20,11 @@ const App = () => {
         flexDirection: 'column',
         justifyContent: 'center',
         alignContent: 'center',
-        padding: 12,
         backgroundColor: '#000000',
-        height: '100%',
-        width: '100%',
-        gap: 30
+        height: '100vh',
+        width: '100vw',
+        gap: 30,
+        padding: 30,
       }}
     >
       <div
@@ -32,7 +32,7 @@ const App = () => {
           textAlign: 'center',
           display: 'flex',
           justifyContent: 'center',
-          gap: 20
+          gap: 20,
         }}>
         <ConnectButton
           showBalance={false}
@@ -41,14 +41,14 @@ const App = () => {
         {!address && (
           <button
             style={{
-              borderRadius: 12,
+              borderRadius: 10,
               backgroundColor: '#ffffff',
               color: '#000000',
-              padding: 8,
+              padding: 12,
               border: 'none',
               fontWeight: 'bold',
             }}
-            onClick={() => setDisplayedAddress(addresses[Math.floor(Math.random() * addresses.length)])}>random address</button>
+            onClick={() => setDisplayedAddress(addresses[Math.floor(Math.random() * addresses.length)])}>Random ETH address</button>
         )}
       </div>
       <div style={{

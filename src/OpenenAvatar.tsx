@@ -1,9 +1,14 @@
+import { useEffect, useState } from "react";
 import { walletColors } from "./lib";
 type Props = {
   address: string;
 };
 
 const OpepenAvatar = ({ address }: Props) => {
+
+
+
+
   const svg = (address: string) => {
     const colors = walletColors(address);
     return `
@@ -70,15 +75,22 @@ const OpepenAvatar = ({ address }: Props) => {
       "utf-8"
     ).toString("base64")}`;
   };
-
+  const [image, setImage] = useState<string>(img(address));
+  useEffect(() => {
+    setImage(img(address));
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [address]);
   return (
     <img
-      src={img(address)}
+      src={image}
       alt=""
       style={{
         width: "100%",
-        maxWidth: "500px"
+        maxWidth: "800px"
       }}
+      onClick={() =>
+        setImage(img(address))
+      }
     />
   );
 };
