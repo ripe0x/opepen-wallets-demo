@@ -48,17 +48,8 @@ const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 
-const CustomAvatar: AvatarComponent = ({ address, ensImage, size }) => {
-  // return ensImage ? (
-  //   <img
-  //     src={ensImage}
-  //     width={size}
-  //     height={size}
-  //     style={{ borderRadius: 999 }}
-  //   />
-  // ) : (
+const CustomAvatar: AvatarComponent = ({ address }) => {
   return <OpepenAvatar address={address} />
-  // );
 };
 
 root.render(
