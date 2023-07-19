@@ -1,5 +1,4 @@
-import React from "react";
-import { gradientForAddress, walletColors } from "./lib";
+import { walletColors } from "./lib";
 type Props = {
   address: string;
 };
