@@ -24,7 +24,6 @@ const App = () => {
         height: '100vh',
         width: '100vw',
         gap: 30,
-        padding: 30,
       }}
     >
       <div

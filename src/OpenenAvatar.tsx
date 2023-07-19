@@ -86,7 +86,7 @@ const OpepenAvatar = ({ address }: Props) => {
       alt=""
       style={{
         width: "100%",
-        maxWidth: "800px"
+        maxWidth: "500px"
       }}
       onClick={() =>
         setImage(img(address))
