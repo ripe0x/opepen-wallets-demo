@@ -1,6 +1,5 @@
-import { ConnectButton } from '@rainbow-me/rainbowkit';
+// import { ConnectButton } from '@rainbow-me/rainbowkit';
 import { useAccount } from 'wagmi';
-import OpepenAvatar from '../src/OpenenAvatar';
 import { useEffect, useState } from 'react';
 import { addresses } from '../src/addresses';
 import OpepenA from '../src/setExamples/opepenA';
@@ -17,13 +16,16 @@ const randomAddress = (addresses: string[]) => {
 const App = () => {
   const { address } = useAccount()
   const [displayedAddress, setDisplayedAddress] = useState<string>(addresses[Math.floor(Math.random() * addresses.length)])
-
+  const [sameAddressUsed, setSameAddressUsed] = useState<boolean>(false)
+  console.log(displayedAddress)
   useEffect(() => {
     if (address) {
       setDisplayedAddress(address)
     }
-  }, [address])
+  }, [address]);
 
+  const oneOfOneAddress = sameAddressUsed ? displayedAddress : randomAddress(addresses);
+  const oneOfOne = <OpepenF address={oneOfOneAddress} />;
   const forties = Array.from({ length: 40 }, (v, k) => k + 1);
   const twenties = Array.from({ length: 20 }, (v, k) => k + 1);
   const tens = Array.from({ length: 10 }, (v, k) => k + 1);
@@ -40,6 +42,7 @@ const App = () => {
         backgroundColor: '#000000',
         gap: 30,
         paddingBottom: 100,
+        overflow: 'hidden',
       }}
     >
       <div className='nav'
@@ -68,54 +71,77 @@ const App = () => {
             }}
             onClick={() => setDisplayedAddress(addresses[Math.floor(Math.random() * addresses.length)])}>Randomize owner addresses</button>
         )}
+        <div>
+          <button
+            style={{
+              borderRadius: 4,
+              backgroundColor: '#ffffff',
+              color: '#000000',
+              paddingTop: 4,
+              paddingBottom: 4,
+              paddingLeft: 8,
+              paddingRight: 8,
+              border: 'none',
+              fontWeight: 'bold',
+            }}
+            onClick={() => setSameAddressUsed(!sameAddressUsed)}>
+            {sameAddressUsed ? <> ✅</> : ''}
+            use same address on all?
+
+          </button>
+          <p
+            style={{
+              color: '#ffffff',
+              fontSize: 10,
+              fontFamily: 'monospace',
+              lineHeight: 1,
+            }}
+          >
+            {displayedAddress}
+          </p>
+        </div>
       </div>
 
       <div className="full-set-grid">
         <div className='one'>
-          <OpepenF address={randomAddress(addresses)} />
+          {/* <OpepenF address={sameAddressUsed ? displayedAddress : randomAddress(addresses)} /> */}
+          {oneOfOne}
         </div>
         <div className='four'>
-          <OpepenE address={randomAddress(addresses)} />
+          <OpepenE address={sameAddressUsed ? displayedAddress : randomAddress(addresses)} />
         </div>
         <div className='five'>
-          <OpepenD address={randomAddress(addresses)} />
+          <OpepenD address={sameAddressUsed ? displayedAddress : randomAddress(addresses)} />
         </div>
         <div className='ten'>
-          <OpepenC address={randomAddress(addresses)} />
+          <OpepenC address={sameAddressUsed ? displayedAddress : randomAddress(addresses)} />
         </div>
         <div className='twenty'>
-          <OpepenB address={randomAddress(addresses)} />
+          <OpepenB address={sameAddressUsed ? displayedAddress : randomAddress(addresses)} />
         </div>
         <div className='forty'>
-          <OpepenA address={randomAddress(addresses)} />
+          <OpepenA address={sameAddressUsed ? displayedAddress : randomAddress(addresses)} />
         </div>
       </div>
       <div style={{
         textAlign: 'center',
       }}>
 
-        <p
-          style={{
-            color: '#ffffff',
-            fontSize: 14,
-            fontFamily: 'monospace',
-          }}
-        >
-          {displayedAddress}
-        </p>
+
         {/* <OpepenAvatar address={displayedAddress} /> */}
         <h3>1/1</h3>
         <div
           className='image-grid'
         >
-          <OpepenF address={randomAddress(addresses)} />
+          {/* <OpepenF address={sameAddressUsed ? displayedAddress : randomAddress(addresses)} /> */}
+          {oneOfOne}
         </div>
         <h3>Four editions</h3>
         <div
           className='image-grid'
         >
           {fours.map((i) => (
-            <OpepenE address={randomAddress(addresses)} />
+            <OpepenE address={sameAddressUsed ? displayedAddress : randomAddress(addresses)} />
           ))}
         </div>
         <h3>Five editions</h3>
@@ -123,7 +149,7 @@ const App = () => {
           className='image-grid'
         >
           {fives.map((i) => (
-            <OpepenD address={randomAddress(addresses)} />
+            <OpepenD address={sameAddressUsed ? displayedAddress : randomAddress(addresses)} />
           ))}
         </div>
         <h3>Ten editions</h3>
@@ -131,7 +157,7 @@ const App = () => {
           className='image-grid'
         >
           {tens.map((i) => (
-            <OpepenC address={randomAddress(addresses)} />
+            <OpepenC address={sameAddressUsed ? displayedAddress : randomAddress(addresses)} />
           ))}
         </div>
 
@@ -140,7 +166,7 @@ const App = () => {
           className='image-grid'
         >
           {twenties.map((i) => (
-            <OpepenB address={randomAddress(addresses)} />
+            <OpepenB address={sameAddressUsed ? displayedAddress : randomAddress(addresses)} />
           ))}
         </div>
         <h3>Forty editions</h3>
@@ -148,7 +174,7 @@ const App = () => {
           className='image-grid'
         >
           {forties.map((i) => (
-            <OpepenA address={randomAddress(addresses)} />
+            <OpepenA address={sameAddressUsed ? displayedAddress : randomAddress(addresses)} />
           ))}
         </div>
 

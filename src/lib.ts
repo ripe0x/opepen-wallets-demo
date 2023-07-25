@@ -146,22 +146,11 @@ export const gradientForAddress = (address: string) => {
     }
   ];
 
-  //return inputs;
 
   return inputs
     .map((c: ColorInput) => tinycolor(c))
     .map((tc: tinycolor.Instance) => tc.toHslString());
 };
-
-// export const walletColors = (address: string) => {
-//   const gradient = gradientForAddress(address);
-//   const length = Array.from({ length: 20 }, (v, k) => k + 1);
-
-//   const colors = length.map((i) => {
-//     return gradient[Math.floor(Math.random() * gradient.length)];
-//   });
-//   return colors;
-// };
 
 const colorRangeFull = [0, 1, 2, 3, 4];
 const colorRangeLight = [0, 1, 2];

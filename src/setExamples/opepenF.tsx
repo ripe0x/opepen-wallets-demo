@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { gradientForAddress, walletColors } from "../lib";
+import { gradientForAddress } from "../lib";
 type Props = {
   address: string;
 };

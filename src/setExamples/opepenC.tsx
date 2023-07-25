@@ -1,6 +1,5 @@
 import { useEffect, useState } from "react";
 import { gradientForAddress, walletColors } from "../lib";
-import { random } from "tinycolor2";
 type Props = {
   address: string;
 };
@@ -12,7 +11,6 @@ export default function OpepenD({ address }: Props) {
   const svg = (address: string) => {
     const ogColors = gradientForAddress(address);
     const colors = walletColors(address, 0);
-    const bgColor = colors[0];
     const eyeColor = colors[1];
     const bgOpacity = Math.floor(Math.random() * 88);
     return `
