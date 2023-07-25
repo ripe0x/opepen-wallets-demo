@@ -6,4 +6,67 @@ body {
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
   box-sizing: border-box;
+  padding-bottom: 100px;
+}
+
+.image-grid {
+  width: 100%;
+  display: flex;
+  padding: 1rem;
+  flex-wrap: wrap;
+  gap: 1rem;
+}
+
+.image-grid > div {
+  width: 15%;
+  border-radius: 1.25rem;
+  border-top-left-radius: 0.25rem;
+  overflow: hidden;
+  display: block;
+}
+.image-grid img {
+  width: 100%;
+  height: 100%;
+  display: block;
+}
+
+h3 {
+  color: #fff;
+  font-size: 1.5rem;
+  display: block;
+  text-align: left;
+  padding: 1rem;
+}
+
+.full-set-grid {
+  width: 100%;
+  max-width: 600px;
+  display: grid;
+  gap: 0.5rem;
+  /* grid-auto-flow: dense; */
+  grid-template-columns: repeat(3,minmax(0,1fr));
+  grid-template-rows: repeat(3,minmax(0,1fr));
+  margin: 120px auto 0;
+  
+}
+
+.full-set-grid img, .full-set-grid > div > div {
+  width: 100%;
+  display: block;
+  border-radius: 1.25rem;
+  border-top-left-radius: 0.25rem;
+}
+.one {
+  grid-column: span 2;
+  grid-row: span 2;
+}
+
+.nav {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 99;
+  background-color: #111;
+  padding: 0.5rem;
 }

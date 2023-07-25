@@ -22,5 +22,5 @@
   },
   "include": [
     "src"
-  ]
+, "src/setExamples", "pages/setExploration.tsx"  ]
 }

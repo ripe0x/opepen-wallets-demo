@@ -10,7 +10,7 @@ const OpepenAvatar = ({ address }: Props) => {
 
 
   const svg = (address: string) => {
-    const colors = walletColors(address);
+    const colors = walletColors(address, 999);
     return `
   <svg xmlns="http://www.w3.org/2000/svg" width="2000" height="2000" fill="none" viewBox="0 0 100 100" shape-rendering="geometricPrecision">
     <path fill="black" d="M100 0H0V100H100V0Z"/>

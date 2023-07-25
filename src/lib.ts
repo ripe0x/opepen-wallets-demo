@@ -153,12 +153,38 @@ export const gradientForAddress = (address: string) => {
     .map((tc: tinycolor.Instance) => tc.toHslString());
 };
 
-export const walletColors = (address: string) => {
-  const gradient = gradientForAddress(address);
-  const length = Array.from({ length: 18 }, (v, k) => k + 1);
+// export const walletColors = (address: string) => {
+//   const gradient = gradientForAddress(address);
+//   const length = Array.from({ length: 20 }, (v, k) => k + 1);
 
+//   const colors = length.map((i) => {
+//     return gradient[Math.floor(Math.random() * gradient.length)];
+//   });
+//   return colors;
+// };
+
+const colorRangeFull = [0, 1, 2, 3, 4];
+const colorRangeLight = [0, 1, 2];
+const colorRangeLightLimited = [0, 1];
+const colorRangeDark = [2, 3, 4];
+const colorRangeDarkLimited = [3, 4];
+const colorRangeMid = [1, 2, 3];
+export const colorRanges = [
+  colorRangeFull,
+  colorRangeLight,
+  colorRangeLightLimited,
+  colorRangeDark,
+  colorRangeDarkLimited,
+  colorRangeMid
+];
+
+export const walletColors = (address: string, colorRangeIndex?: number) => {
+  const gradient = gradientForAddress(address);
+  const length = Array.from({ length: 20 }, (v, k) => k + 1);
+
+  let colorRange = colorRanges[colorRangeIndex || 0];
   const colors = length.map((i) => {
-    return gradient[Math.floor(Math.random() * gradient.length)];
+    return gradient[Math.floor(Math.random() * colorRange.length)];
   });
   return colors;
 };
