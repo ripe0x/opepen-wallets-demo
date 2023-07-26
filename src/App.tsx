@@ -162,7 +162,7 @@ const App = () => {
           ))}
         </div>
 
-        <h3>Twentie editions</h3>
+        <h3>Twenty editions</h3>
         <div
           className='image-grid'
         >
