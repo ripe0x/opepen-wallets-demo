@@ -7,7 +7,8 @@ import OpepenB from './setExamples/opepenB';
 import OpepenC from './setExamples/opepenC';
 import OpepenD from './setExamples/opepenD';
 import OpepenE from './setExamples/opepenE';
-import OpepenF from './setExamples/opepenF';
+// import OpepenF from './setExamples/opepenF';
+import OpepenOffset from './setExamples/opepenOffset';
 
 const randomAddress = (addresses: string[]) => {
   return addresses[Math.floor(Math.random() * addresses.length)]
@@ -25,7 +26,7 @@ const App = () => {
   }, [address]);
 
   const oneOfOneAddress = sameAddressUsed ? displayedAddress : randomAddress(addresses);
-  const oneOfOne = <OpepenF address={oneOfOneAddress} />;
+  const oneOfOne = <OpepenOffset address={oneOfOneAddress} />;
   const forties = Array.from({ length: 40 }, (v, k) => k + 1);
   const twenties = Array.from({ length: 20 }, (v, k) => k + 1);
   const tens = Array.from({ length: 10 }, (v, k) => k + 1);
