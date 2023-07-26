@@ -5,7 +5,7 @@ import reportWebVitals from './reportWebVitals';
 import './index.css';
 
 import '@rainbow-me/rainbowkit/styles.css';
-import { AvatarComponent, getDefaultWallets, RainbowKitProvider } from '@rainbow-me/rainbowkit';
+import { getDefaultWallets } from '@rainbow-me/rainbowkit';
 import { configureChains, createConfig, WagmiConfig } from 'wagmi';
 import {
   mainnet,
@@ -17,7 +17,7 @@ import {
 } from 'wagmi/chains';
 import { publicProvider } from 'wagmi/providers/public';
 import App from './App';
-import OpepenAvatar from './OpenenAvatar';
+// import OpepenAvatar from './OpenenAvatar';
 
 const { chains, publicClient, webSocketPublicClient } = configureChains(
   [
@@ -48,16 +48,16 @@ const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
 );
 
-const CustomAvatar: AvatarComponent = ({ address }) => {
-  return <OpepenAvatar address={address} />
-};
+// const CustomAvatar: AvatarComponent = ({ address }) => {
+//   return <OpepenAvatar address={address} />
+// };
 
 root.render(
   <React.StrictMode>
     <WagmiConfig config={wagmiConfig}>
-      <RainbowKitProvider chains={chains} avatar={CustomAvatar}>
-        <App />
-      </RainbowKitProvider>
+      {/* <RainbowKitProvider chains={chains} avatar={CustomAvatar}> */}
+      <App />
+      {/* </RainbowKitProvider> */}
     </WagmiConfig>
   </React.StrictMode>
 );

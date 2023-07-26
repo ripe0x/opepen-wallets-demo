@@ -1,6 +1,6 @@
 // import { ConnectButton } from '@rainbow-me/rainbowkit';
-import { useAccount } from 'wagmi';
-import { useEffect, useState } from 'react';
+// import { useAccount } from 'wagmi';
+import { useState } from 'react';
 import { addresses } from '../src/addresses';
 import OpepenA from '../src/setExamples/opepenA';
 import OpepenB from './setExamples/opepenB';
@@ -15,15 +15,15 @@ const randomAddress = (addresses: string[]) => {
 }
 
 const App = () => {
-  const { address } = useAccount()
+  // const { address } = useAccount()
   const [displayedAddress, setDisplayedAddress] = useState<string>(addresses[Math.floor(Math.random() * addresses.length)])
   const [sameAddressUsed, setSameAddressUsed] = useState<boolean>(false)
   console.log(displayedAddress)
-  useEffect(() => {
-    if (address) {
-      setDisplayedAddress(address)
-    }
-  }, [address]);
+  // useEffect(() => {
+  //   if (address) {
+  //     setDisplayedAddress(address)
+  //   }
+  // }, [address]);
 
   const oneOfOneAddress = sameAddressUsed ? displayedAddress : randomAddress(addresses);
   const oneOfOne = <OpepenOffset address={oneOfOneAddress} />;
@@ -57,21 +57,21 @@ const App = () => {
           showBalance={false}
           chainStatus="icon"
         /> */}
-        {!address && (
-          <button
-            style={{
-              borderRadius: 4,
-              backgroundColor: '#ffffff',
-              color: '#000000',
-              paddingTop: 4,
-              paddingBottom: 4,
-              paddingLeft: 8,
-              paddingRight: 8,
-              border: 'none',
-              fontWeight: 'bold',
-            }}
-            onClick={() => setDisplayedAddress(addresses[Math.floor(Math.random() * addresses.length)])}>Randomize owner addresses</button>
-        )}
+        {/* {!address && ( */}
+        <button
+          style={{
+            borderRadius: 4,
+            backgroundColor: '#ffffff',
+            color: '#000000',
+            paddingTop: 4,
+            paddingBottom: 4,
+            paddingLeft: 8,
+            paddingRight: 8,
+            border: 'none',
+            fontWeight: 'bold',
+          }}
+          onClick={() => setDisplayedAddress(addresses[Math.floor(Math.random() * addresses.length)])}>Randomize owner addresses</button>
+        {/* )} */}
         <div>
           <button
             style={{
