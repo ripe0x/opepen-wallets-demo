@@ -70,3 +70,14 @@ h3 {
   background-color: #111;
   padding: 0.5rem;
 }
+
+.palette {
+  display: flex;
+  width: 100%;
+  gap: 5px;
+}
+.palette > div {
+  width: 50px;
+  height: 50px;
+  display: block;
+}

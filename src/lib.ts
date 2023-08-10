@@ -36,7 +36,7 @@ const bScaleRange = (byte: number, min: number, max: number) => {
 
 export const lerpHueFn = (optionNum: number, direction: number) => {
   const option = optionNum % 4;
-  const multiplier = direction ? 1 : -1;
+  const multiplier = direction ? 15 : -5;
   switch (option) {
     case 0: {
       return function (hue: number, pct: number) {

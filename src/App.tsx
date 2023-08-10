@@ -9,12 +9,30 @@ import OpepenD from './setExamples/opepenD';
 import OpepenE from './setExamples/opepenE';
 // import OpepenF from './setExamples/opepenF';
 import OpepenOffset from './setExamples/opepenOffset';
+import { gradientForAddress } from './lib';
 
 const randomAddress = (addresses: string[]) => {
   return addresses[Math.floor(Math.random() * addresses.length)]
 }
 
+export async function copyPicture() {
+  // not working
+  try {
+    const response = await fetch('./logo.png');
+    const blob = await response.blob();
+    await navigator.clipboard.write([
+      new ClipboardItem({
+        [blob.type]: blob
+      })
+    ]);
+    console.log('Image copied.');
+  } catch (err: any) {
+    console.error(err.name, err.message);
+  }
+};
+
 const App = () => {
+
   // const { address } = useAccount()
   const [displayedAddress, setDisplayedAddress] = useState<string>(addresses[Math.floor(Math.random() * addresses.length)])
   const [sameAddressUsed, setSameAddressUsed] = useState<boolean>(false)
@@ -33,6 +51,9 @@ const App = () => {
   const fives = Array.from({ length: 5 }, (v, k) => k + 1);
   const fours = Array.from({ length: 4 }, (v, k) => k + 1);
 
+  const colorPalette = gradientForAddress(sameAddressUsed ? displayedAddress : randomAddress(addresses));
+  // const colorPalette = gradientForAddress("0xdd4a37c03b11324ac2c0d31c40acc9989d2f71f8");
+
   return (
     <div
       style={{
@@ -46,6 +67,7 @@ const App = () => {
         overflow: 'hidden',
       }}
     >
+
       <div className='nav'
         style={{
           textAlign: 'center',
@@ -124,6 +146,34 @@ const App = () => {
           <OpepenA address={sameAddressUsed ? displayedAddress : randomAddress(addresses)} />
         </div>
       </div>
+      palette
+      <div className="palette">
+        <div className='one'
+          style={{
+            background: colorPalette[0]
+          }}
+        ></div>
+        <div className='two'
+          style={{
+            background: colorPalette[1]
+          }}
+        ></div>
+        <div className='three'
+          style={{
+            background: colorPalette[2]
+          }}
+        ></div>
+        <div className='four'
+          style={{
+            background: colorPalette[3]
+          }}
+        ></div>
+        <div className='five'
+          style={{
+            background: colorPalette[4]
+          }}
+        ></div>
+      </div>
       <div style={{
         textAlign: 'center',
       }}>
@@ -174,8 +224,11 @@ const App = () => {
         <div
           className='image-grid'
         >
-          {forties.map((i) => (
+          {/* {forties.map((i) => (
             <OpepenA address={sameAddressUsed ? displayedAddress : randomAddress(addresses)} />
+          ))} */}
+          {forties.map((i) => (
+            <OpepenOffset address={sameAddressUsed ? displayedAddress : randomAddress(addresses)} />
           ))}
         </div>
 
