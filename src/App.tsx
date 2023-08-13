@@ -45,7 +45,7 @@ const App = () => {
 
   const oneOfOneAddress = sameAddressUsed ? displayedAddress : randomAddress(addresses);
   const oneOfOne = <OpepenOffset address={oneOfOneAddress} />;
-  const forties = Array.from({ length: 40 }, (v, k) => k + 1);
+  const examples = Array.from({ length: 100 }, (v, k) => k + 1);
   const twenties = Array.from({ length: 20 }, (v, k) => k + 1);
   const tens = Array.from({ length: 10 }, (v, k) => k + 1);
   const fives = Array.from({ length: 5 }, (v, k) => k + 1);
@@ -64,88 +64,8 @@ const App = () => {
         backgroundColor: '#000000',
         gap: 30,
         paddingBottom: 100,
-        overflow: 'hidden',
       }}
     >
-
-      <div className='nav'
-        style={{
-          textAlign: 'center',
-          display: 'flex',
-          justifyContent: 'center',
-          gap: 20,
-        }}>
-        {/* <ConnectButton
-          showBalance={false}
-          chainStatus="icon"
-        /> */}
-        {/* {!address && ( */}
-        <button
-          style={{
-            borderRadius: 4,
-            backgroundColor: '#ffffff',
-            color: '#000000',
-            paddingTop: 4,
-            paddingBottom: 4,
-            paddingLeft: 8,
-            paddingRight: 8,
-            border: 'none',
-            fontWeight: 'bold',
-          }}
-          onClick={() => setDisplayedAddress(addresses[Math.floor(Math.random() * addresses.length)])}>Randomize owner addresses</button>
-        {/* )} */}
-        <div>
-          <button
-            style={{
-              borderRadius: 4,
-              backgroundColor: '#ffffff',
-              color: '#000000',
-              paddingTop: 4,
-              paddingBottom: 4,
-              paddingLeft: 8,
-              paddingRight: 8,
-              border: 'none',
-              fontWeight: 'bold',
-            }}
-            onClick={() => setSameAddressUsed(!sameAddressUsed)}>
-            {sameAddressUsed ? <> ✅</> : ''}
-            use same address on all?
-
-          </button>
-          <p
-            style={{
-              color: '#ffffff',
-              fontSize: 10,
-              fontFamily: 'monospace',
-              lineHeight: 1,
-            }}
-          >
-            {displayedAddress}
-          </p>
-        </div>
-      </div>
-
-      <div className="full-set-grid">
-        <div className='one'>
-          {/* <OpepenF address={sameAddressUsed ? displayedAddress : randomAddress(addresses)} /> */}
-          {oneOfOne}
-        </div>
-        <div className='four'>
-          <OpepenE address={sameAddressUsed ? displayedAddress : randomAddress(addresses)} />
-        </div>
-        <div className='five'>
-          <OpepenD address={sameAddressUsed ? displayedAddress : randomAddress(addresses)} />
-        </div>
-        <div className='ten'>
-          <OpepenC address={sameAddressUsed ? displayedAddress : randomAddress(addresses)} />
-        </div>
-        <div className='twenty'>
-          <OpepenB address={sameAddressUsed ? displayedAddress : randomAddress(addresses)} />
-        </div>
-        <div className='forty'>
-          <OpepenA address={sameAddressUsed ? displayedAddress : randomAddress(addresses)} />
-        </div>
-      </div>
       palette
       <div className="palette">
         <div className='one'
@@ -174,52 +94,18 @@ const App = () => {
           }}
         ></div>
       </div>
-      <div style={{
-        textAlign: 'center',
-      }}>
-
-
-        {/* <OpepenAvatar address={displayedAddress} /> */}
-        <h3>1/1</h3>
-        <div
-          className='image-grid'
-        >
-          {/* <OpepenF address={sameAddressUsed ? displayedAddress : randomAddress(addresses)} /> */}
-          {oneOfOne}
-        </div>
-        <h3>Four editions</h3>
-        <div
-          className='image-grid'
-        >
-          {fours.map((i) => (
-            <OpepenE address={sameAddressUsed ? displayedAddress : randomAddress(addresses)} />
-          ))}
-        </div>
-        <h3>Five editions</h3>
-        <div
-          className='image-grid'
-        >
-          {fives.map((i) => (
-            <OpepenD address={sameAddressUsed ? displayedAddress : randomAddress(addresses)} />
-          ))}
-        </div>
-        <h3>Ten editions</h3>
-        <div
-          className='image-grid'
-        >
-          {tens.map((i) => (
-            <OpepenC address={sameAddressUsed ? displayedAddress : randomAddress(addresses)} />
-          ))}
-        </div>
-
-        <h3>Twenty editions</h3>
-        <div
-          className='image-grid'
-        >
-          {twenties.map((i) => (
-            <OpepenB address={sameAddressUsed ? displayedAddress : randomAddress(addresses)} />
-          ))}
-        </div>
+      <div className='nav'
+        style={{
+          textAlign: 'center',
+          display: 'flex',
+          justifyContent: 'center',
+          gap: 20,
+        }}>
+        {/* <ConnectButton
+          showBalance={false}
+          chainStatus="icon"
+        /> */}
+        {/* {!address && ( */}
         <h3>Forty editions</h3>
         <div
           className='image-grid'
@@ -227,8 +113,8 @@ const App = () => {
           {/* {forties.map((i) => (
             <OpepenA address={sameAddressUsed ? displayedAddress : randomAddress(addresses)} />
           ))} */}
-          {forties.map((i) => (
-            <OpepenOffset address={sameAddressUsed ? displayedAddress : randomAddress(addresses)} />
+          {examples.map((i) => (
+            <OpepenE address={sameAddressUsed ? displayedAddress : randomAddress(addresses)} />
           ))}
         </div>
 
