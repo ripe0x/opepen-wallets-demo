@@ -34,9 +34,9 @@ const bScaleRange = (byte: number, min: number, max: number) => {
   return bscale(byte, max - min) + min;
 };
 
-export const lerpHueFn = (optionNum: number, direction: number) => {
+export const lerpHueFn = (optionNum: number, direction: number, multiplierNumber?: number) => {
   const option = optionNum % 4;
-  const multiplier = direction ? 15 : -5;
+  const multiplier = multiplierNumber ? multiplierNumber : 0;
   switch (option) {
     case 0: {
       return function (hue: number, pct: number) {
@@ -104,20 +104,32 @@ const lerpSaturationFn = (optionNum: number) => {
   }
 };
 
-export const gradientForAddress = (address: string) => {
+export const gradientForAddress = (address: string, startLightnessNumber?: number, endLightnessNumber?: number, multiplier?: number, startSaturationNumber?: number, endSaturationNumber?: number) => {
   const bytes = arrayify(address).reverse();
-  const hueShiftFn = lerpHueFn(bytes[3], bytes[6] % 2);
+  const hueShiftFn = lerpHueFn(bytes[3], bytes[6] % 2, multiplier);
   const startHue = bscale(bytes[12], 360);
-  const startLightness = bScaleRange(bytes[2], 32, 69.5);
-  const endLightness = (97 + bScaleRange(bytes[8], 72, 97)) / 2;
-  let startSaturation = bScaleRange(bytes[7], 81, 97);
-  let endSaturation = Math.min(
+  const startLightness = startLightnessNumber ? startLightnessNumber : bScaleRange(bytes[2], 32, 69.5);
+  const endLightness = endLightnessNumber ? endLightnessNumber : (97 + bScaleRange(bytes[8], 72, 97)) / 2;
+  let startSaturation = startSaturationNumber ? startSaturationNumber : bScaleRange(bytes[7], 81, 97);
+  let endSaturation = endSaturationNumber ? endSaturationNumber : Math.min(
     startSaturation - 10,
     bScaleRange(bytes[10], 70, 92)
   );
 
   const lightnessShiftFn = lerpLightnessFn(bytes[5] % 2);
-  const saturationShiftFn = lerpSaturationFn(bytes[3] % 2);
+  // const saturationShiftFn = lerpSaturationFn(bytes[3] % 2);
+  const saturationShiftFn = (startSaturation: number, endSaturation: number, num: number) => {
+
+    const saturation = lerpSaturationFn(bytes[3] % 2)
+    const sat = saturation(startSaturation, endSaturation, num);
+    console.log('startSaturation', startSaturation);
+    console.log('endSaturation', endSaturation);
+    console.log('num', num);
+    console.log('saturation', sat);
+    return sat;
+  };
+  console.log(saturationShiftFn(startSaturation, endSaturation, 0.7))
+  console.log(startSaturation, endSaturation)
   const inputs: ColorInput[] = [
     {
       h: hueShiftFn(startHue, 0),
@@ -167,8 +179,10 @@ export const colorRanges = [
   colorRangeMid
 ];
 
-export const walletColors = (address: string, colorRangeIndex?: number) => {
-  const gradient = gradientForAddress(address);
+export const walletColors = (address: string, colorRangeIndex?: number, startLightnessNumber?: number, endLightnessNumber?: number, multiplier?: number, startSaturationNumber?: number, endSaturationNumber?: number) => {
+  console.log('startSaturationNumber', startSaturationNumber);
+  console.log('endSaturationNumber', endSaturationNumber);
+  const gradient = gradientForAddress(address, startLightnessNumber, endLightnessNumber, multiplier, 90, 99);
   const length = Array.from({ length: 20 }, (v, k) => k + 1);
 
   let colorRange = colorRanges[colorRangeIndex || 0];
@@ -177,3 +191,16 @@ export const walletColors = (address: string, colorRangeIndex?: number) => {
   });
   return colors;
 };
+
+
+export const randomOpacity = (min: number, max: number) => {
+  const opacity = min + (Math.floor(Math.random() * max));
+  if (opacity > 100) {
+    return `0.${999}`;
+  }
+  return `0.${opacity}`;
+}
+
+export const randomAddress = (addresses: string[]) => {
+  return addresses[Math.floor(Math.random() * addresses.length)]
+}

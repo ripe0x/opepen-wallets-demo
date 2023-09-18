@@ -9,15 +9,15 @@ body {
 }
 
 .image-grid {
-  width: 100%;
+  width: calc(100% - 6rem);
   display: flex;
-  padding: 1rem;
+  padding: 1rem 3rem;
   flex-wrap: wrap;
   gap: 1rem;
 }
 
 .image-grid > div {
-  width: 15%;
+  width: 20%;
   border-radius: 1.25rem;
   border-top-left-radius: 0.25rem;
   overflow: hidden;
@@ -34,7 +34,7 @@ h3 {
   font-size: 1.5rem;
   display: block;
   text-align: left;
-  padding: 1rem 1rem 0;
+  padding: 2rem 1rem;
   margin: 0.5rem 0 0;
 }
 
@@ -42,12 +42,11 @@ h3 {
   width: 100%;
   max-width: 600px;
   display: grid;
-  gap: 0.5rem;
+  gap: 1rem;
   /* grid-auto-flow: dense; */
   grid-template-columns: repeat(3,minmax(0,1fr));
   grid-template-rows: repeat(3,minmax(0,1fr));
-  margin: 120px auto 0;
-  
+  margin: 120px auto 0; 
 }
 
 .full-set-grid img, .full-set-grid > div > div {
@@ -56,9 +55,30 @@ h3 {
   border-radius: 1.25rem;
   border-top-left-radius: 0.25rem;
 }
+
 .one {
   grid-column: span 2;
   grid-row: span 2;
+}
+
+.full-set-grid > div {
+  position: relative;
+}
+
+.full-set-grid > div > span {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  font-size: 14px;
+  background-color: rgba(0,0,0,0.5);
+  color: rgba(255,255,255,0.75);
+  padding: 5px 5px 5px 10px;
+  border-top-right-radius: 8px;
+  opacity: 0;
+  transition: all 0.2s ease-in-out;
+}
+.full-set-grid:hover span {
+  opacity: 1;
 }
 
 .nav {
