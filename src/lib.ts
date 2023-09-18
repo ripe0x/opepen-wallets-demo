@@ -122,14 +122,9 @@ export const gradientForAddress = (address: string, startLightnessNumber?: numbe
 
     const saturation = lerpSaturationFn(bytes[3] % 2)
     const sat = saturation(startSaturation, endSaturation, num);
-    console.log('startSaturation', startSaturation);
-    console.log('endSaturation', endSaturation);
-    console.log('num', num);
-    console.log('saturation', sat);
     return sat;
   };
-  console.log(saturationShiftFn(startSaturation, endSaturation, 0.7))
-  console.log(startSaturation, endSaturation)
+
   const inputs: ColorInput[] = [
     {
       h: hueShiftFn(startHue, 0),
@@ -180,8 +175,6 @@ export const colorRanges = [
 ];
 
 export const walletColors = (address: string, colorRangeIndex?: number, startLightnessNumber?: number, endLightnessNumber?: number, multiplier?: number, startSaturationNumber?: number, endSaturationNumber?: number) => {
-  console.log('startSaturationNumber', startSaturationNumber);
-  console.log('endSaturationNumber', endSaturationNumber);
   const gradient = gradientForAddress(address, startLightnessNumber, endLightnessNumber, multiplier, 90, 99);
   const length = Array.from({ length: 20 }, (v, k) => k + 1);
 
@@ -203,4 +196,14 @@ export const randomOpacity = (min: number, max: number) => {
 
 export const randomAddress = (addresses: string[]) => {
   return addresses[Math.floor(Math.random() * addresses.length)]
+}
+
+export const rotateImagesOnDelay = (images: string[]) => {
+  const length = images.length;
+  let index = 0;
+  return () => {
+    index = (index + 1) % length;
+    return images[index];
+  }
+
 }
