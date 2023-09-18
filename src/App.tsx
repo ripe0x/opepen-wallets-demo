@@ -41,7 +41,7 @@ const App = () => {
         overflow: 'hidden',
       }}
     >
-      <SetFrame address={sameAddressUsed ? displayedAddress : randomAddress(addresses)} isRotating={false} isSameAddressUsed={sameAddressUsed} />
+      <SetFrame address={sameAddressUsed ? displayedAddress : randomAddress(addresses)} isRotating={true} isSameAddressUsed={sameAddressUsed} />
     </div>
 
   );
