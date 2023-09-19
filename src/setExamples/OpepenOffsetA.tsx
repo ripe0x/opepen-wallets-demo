@@ -7,15 +7,15 @@ type Props = {
 
 const randomSkew = () => {
   const weightedSelection = Math.floor(Math.random() * 200);
-  if (weightedSelection < 15) {
-    return Math.floor(Math.random() * -5);
-  }
-  if (weightedSelection > 15 && weightedSelection < 30) {
-    return Math.floor(Math.random() * 2);
-  }
-  if (weightedSelection > 90 && weightedSelection < 100) {
-    return Math.floor(Math.random() * 6);
-  }
+  // if (weightedSelection < 15) {
+  //   return Math.floor(Math.random() * -5);
+  // }
+  // if (weightedSelection > 15 && weightedSelection < 30) {
+  //   return Math.floor(Math.random() * 2);
+  // }
+  // if (weightedSelection > 31 && weightedSelection < 100) {
+  //   return Math.floor(Math.random() * 6);
+  // }
   return 0;
 }
 
@@ -36,10 +36,10 @@ const randomRotate = () => {
 const randomOffset = () => {
   const weightedSelection = Math.floor(Math.random() * 100);
   if (weightedSelection < 80) {
-    return Math.floor(Math.random() * 75);
+    return Math.floor(Math.random() * 65);
   }
-  if (weightedSelection > 80 && weightedSelection < 90) {
-    return Math.floor(Math.random() * 100);
+  if (weightedSelection > 70 && weightedSelection < 90) {
+    return Math.floor(Math.random() * 80);
   }
 }
 

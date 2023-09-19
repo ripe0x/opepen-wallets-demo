@@ -35,11 +35,11 @@ const randomRotate = () => {
 
 const randomOffset = () => {
   const weightedSelection = Math.floor(Math.random() * 100);
-  if (weightedSelection < 80) {
-    return Math.floor(Math.random() * 75);
+  if (weightedSelection < 49) {
+    return Math.floor(Math.random() * 125);
   }
-  if (weightedSelection > 80 && weightedSelection < 90) {
-    return Math.floor(Math.random() * 100);
+  if (weightedSelection > 50 && weightedSelection < 90) {
+    return Math.floor(Math.random() * 200);
   }
 }
 

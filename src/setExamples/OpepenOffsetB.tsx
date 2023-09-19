@@ -8,39 +8,40 @@ type Props = {
 const randomSkew = () => {
   const weightedSelection = Math.floor(Math.random() * 200);
   if (weightedSelection < 15) {
-    return Math.floor(Math.random() * -5);
+    return Math.floor(Math.random() * -2);
   }
   if (weightedSelection > 15 && weightedSelection < 30) {
-    return Math.floor(Math.random() * 4);
+    return Math.floor(Math.random() * 2);
   }
   if (weightedSelection > 90 && weightedSelection < 100) {
-    return Math.floor(Math.random() * 6);
+    return Math.floor(Math.random() * 4);
   }
   return 0;
 }
 
 const randomRotate = () => {
-  const weightedSelection = Math.floor(Math.random() * 100);
-  if (weightedSelection < 15) {
-    return Math.floor(Math.random() * -5);
-  }
-  if (weightedSelection > 15 && weightedSelection < 30) {
-    return Math.floor(Math.random() * 5);
-  }
-  if (weightedSelection > 90) {
-    return Math.floor(Math.random() * 12);
-  }
+  // const weightedSelection = Math.floor(Math.random() * 100);
+  // if (weightedSelection < 15) {
+  //   return Math.floor(Math.random() * -5);
+  // }
+  // if (weightedSelection > 15 && weightedSelection < 30) {
+  //   return Math.floor(Math.random() * 5);
+  // }
+  // if (weightedSelection > 90) {
+  //   return Math.floor(Math.random() * 12);
+  // }
   return 0;
 }
 
 const randomOffset = () => {
   const weightedSelection = Math.floor(Math.random() * 100);
-  if (weightedSelection < 80) {
-    return Math.floor(Math.random() * 75);
-  }
-  if (weightedSelection > 80 && weightedSelection < 90) {
-    return Math.floor(Math.random() * 100);
-  }
+  // if (weightedSelection < 80) {
+  //   return Math.floor(Math.random() * 75);
+  // }
+  // if (weightedSelection > 80 && weightedSelection < 90) {
+  //   return Math.floor(Math.random() * 300);
+  // }
+  return 0
 }
 
 const randomBlend = () => {
