@@ -94,7 +94,7 @@ export default function OpepenOffsetF({ address }: Props) {
     <path style="mix-blend-mode: ${blendMode}; transform: translate(${randomOffset()}px, -${randomOffset()}px) skew(${randomSkew()}deg, ${randomSkew()}deg) rotate(${randomRotate()})" fill="${colors[2]}" opacity="${randomOpacity(minOpacity, maxOpacity)}" d="M1250 1750c66.3 0 129.89 26.34 176.78 73.22A250.04 250.04 0 0 1 1500 2000h-250v-250Z"/>
     <defs><filter id="nnnoise-filter" x="-20%" y="-20%" width="140%" height="140%" filterUnits="objectBoundingBox" primitiveUnits="userSpaceOnUse" color-interpolation-filters="linearRGB">
       <feTurbulence type="fractalNoise" baseFrequency="0.086" numOctaves="4" seed="15" stitchTiles="stitch" x="0%" y="0%" width="100%" height="100%" result="turbulence"></feTurbulence>
-      <feSpecularLighting surfaceScale="22" specularConstant="0.6" specularExponent="20" lighting-color="${noiseColor}" x="0%" y="0%" width="100%" height="100%" in="turbulence" result="specularLighting">
+      <feSpecularLighting surfaceScale="22" specularConstant="0.15" specularExponent="20" lighting-color="${noiseColor}" x="0%" y="0%" width="100%" height="100%" in="turbulence" result="specularLighting">
             <feDistantLight azimuth="3" elevation="95"></feDistantLight>
         </feSpecularLighting>
       
